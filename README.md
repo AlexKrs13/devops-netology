@@ -50,3 +50,4 @@ override.tf.json
 # игнорировать скрытые файлы .terraformrc и файлы terraform.rc
 .terraformrc
 terraform.rc
+# 05.06.2022
