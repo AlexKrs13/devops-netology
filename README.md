@@ -41,8 +41,25 @@ dd01a35078f040ca984cdd349f18d0b67e486c35 Update CHANGELOG.md
 5af1e6234 - Martin Atkins - Tue Apr 21 16:28:59 2020 -0700 - main: Honor explicit provider_installation CLI config when present
 
 #6. Найдите все коммиты в которых была изменена функция globalPluginDirs
-❯ git log -S "func globalPluginDirs" --pretty=format:"%h - %an - %ad - %s"
-8364383c3 - Martin Atkins - Thu Apr 13 18:05:58 2017 -0700 - Push plugin discovery down into command package
+❯ git grep -p "globalPluginDirs"
+plugins.go:func globalPluginDirs() []string {
+❯ git log -L :globalPluginDirs:plugins.go
+
+commit 78b12205587fe839f10d946ea3fdc06719decb05
+Author: Pam Selle <204372+pselle@users.noreply.github.com>
+Date:   Mon Jan 13 16:50:05 2020 -0500
+
+commit 52dbf94834cb970b510f2fba853a5b49ad9b1a46
+Author: James Bardin <j.bardin@gmail.com>
+Date:   Wed Aug 9 17:46:49 2017 -0400
+
+commit 41ab0aef7a0fe030e84018973a64135b11abcd70
+Author: James Bardin <j.bardin@gmail.com>
+Date:   Wed Aug 9 10:34:11 2017 -0400
+
+commit 66ebff90cdfaa6938f26f908c7ebad8d547fea17
+Author: James Bardin <j.bardin@gmail.com>
+Date:   Wed May 3 22:24:51 2017 -0400
 
 #7. Кто автор функции synchronizedWriters
 ❯ git log -S synchronizedWriters
