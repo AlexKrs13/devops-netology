@@ -8,22 +8,22 @@
 ```
 2. Установите средство автоматизации Hashicorp Vagrant.
 ```
-❯ brew install --cask vagrant
-❯ vagrant plugin install vagrant-parallels
+❯ brew install --cask vagrant  
+❯ vagrant plugin install vagrant-parallels  
 
 ```
 3. В вашем основном окружении подготовьте удобный для дальнейшей работы терминал.
 ```
-Установлен iTerm2 + zsh.
+Установлен iTerm2 + zsh.  
 
 ```
 4. С помощью базового файла конфигурации запустите Ubuntu 20.04 в VirtualBox посредством Vagrant
 ```
 Содержание Vagrantfile:  
-Vagrant.configure("2") do |config|
-  config.vm.box_download_insecure = true
-  config.vm.box = "jeffnoxon/ubuntu-20.04-arm64"
-end
+Vagrant.configure("2") do |config|  
+  config.vm.box_download_insecure = true  
+  config.vm.box = "jeffnoxon/ubuntu-20.04-arm64"  
+end  
 
 ```
 5. Ознакомьтесь с графическим интерфейсом VirtualBox, 
