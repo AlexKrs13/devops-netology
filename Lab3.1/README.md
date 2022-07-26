@@ -112,7 +112,7 @@ bash is /tmp/new_path_directory/bash
 bash is /usr/local/bin/bash
 bash is /bin/bash
 ```
-
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.1/Screenshot.png)
 
 ```
 13. Чем отличается планирование команд с помощью batch и at?
