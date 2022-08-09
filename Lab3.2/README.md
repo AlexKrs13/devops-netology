@@ -20,15 +20,7 @@ cd - это встроенная в оболочку bash команда, ее �
 3. Какой процесс с PID 1 является родителем для всех процессов в вашей виртуальной машине Ubuntu 20.04?
 ```
 Это systemd:  
-vagrant@vagrant:/bin$ pstree -p  
-systemd(1)─┬─ModemManager(776)─┬─{ModemManager}(797)  
-           │                   └─{ModemManager}(804)  
-           ├─accounts-daemon(691)─┬─{accounts-daemon}(709)  
-           │                      └─{accounts-daemon}(768)  
-           ├─agetty(13865)  
-           ├─agetty(28408)  
-           ├─atd(717)  
-           ├─cron(694)  
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.2/Screenshot3.png)
 
 ```
 4. Как будет выглядеть команда, которая перенаправит вывод stderr ls на другую сессию терминала?
@@ -47,6 +39,8 @@ vagrant@vagrant:~$ ls: cannot access 'bin': No such file or directory
 5. Получится ли одновременно передать команде файл на stdin и вывести ее stdout в другой файл?
 Приведите работающий пример.
 ```
+
+```
 vagrant@vagrant:~/testdir$ cat input.txt  
 _line1  
 _line2  
@@ -60,12 +54,13 @@ vagrant@vagrant:~/testdir$ cat output.txt
 _line1
 _line2
 _line3
+```
 
 ```
 6. Получится ли находясь в графическом режиме, вывести данные из PTY в какой-либо из эмуляторов TTY?
 Сможете ли вы наблюдать выводимые данные?
 ```
-![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.2/Screenshot.png)
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.2/Screenshot6.png)
 
 ```
 7. Выполните команду bash 5>&1. К чему она приведет?
