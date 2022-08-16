@@ -19,7 +19,7 @@ vagrant@netology1:~$ file /bin/bash
 Используя strace выясните, где находится база данных file на основании которой она делает свои догадки.
 ```
 
-База данных file находится: /usr/share/misc/magic.mgc
+База данных file находится: /usr/share/misc/magic.mgc  
 openat(AT_FDCWD, "/usr/share/misc/magic.mgc", O_RDONLY) = 3
 
 ```
@@ -62,7 +62,8 @@ root@vagrant:~# dpkg -L bpfcc-tools | grep sbin/opensnoop
 * yum install kernel-headers
 * yum install kernel-devel-$(uname -r)
 
-./opensnoop
+```
+./opensnoop  
 PID    COMM               FD ERR PATH
 16648  cadvisor            7   0 /rootfs/sys/fs/cgroup/cpu,cpuacct/system.slice/cpu.stat
 16648  cadvisor            7   0 /rootfs/sys/fs/cgroup/cpu,cpuacct/system.slice/cpuacct.stat
@@ -70,7 +71,7 @@ PID    COMM               FD ERR PATH
 16648  cadvisor            7   0 /rootfs/sys/fs/cgroup/cpu,cpuacct/system.slice/cpuacct.usage_percpu
 16648  cadvisor            7   0 /rootfs/sys/fs/cgroup/memory/system.slice/memory.stat
 ...
-
+```
 
 ```
 6. Какой системный вызов использует uname -a?
@@ -78,7 +79,7 @@ PID    COMM               FD ERR PATH
 где можно узнать версию ядра и релиз ОС.
 ```
 * вызов uname()
-* из man:
+* из man:  
    2228        /proc/sys/kernel/ostype and /proc/sys/kernel/osrelease  
    2229               These files give substrings of /proc/version.
 ```
