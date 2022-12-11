@@ -15,5 +15,12 @@
 Выполнено!
 
 ```
-2. Создение тегов
+3. Создание ветки fix
+```
+* [Github graph](https://github.com/aleksey-raevich/devops-netology/network)
+* [Gitlab graph](https://gitlab.com/aleksey-raevich/devops-netology/-/network/master)
+* [Bitbucket graph](https://bitbucket.org/aleksey-raevich/devops-netology/commits/)
+
+```
+4. Update from IDE
 ```
