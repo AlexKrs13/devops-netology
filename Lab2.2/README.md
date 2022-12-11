@@ -9,6 +9,6 @@
 2. Ссылки на репозитории
 ```
 
-* [Github репозиторий](https://github.com/aleksey-raevich/devops-netology/tree/master/Lab2.2/ "Github репозиторий")
+* [![Github репозиторий](https://github.com/aleksey-raevich/devops-netology/tree/master/Lab2.2/ =1294x456)](https://github.com/aleksey-raevich/devops-netology/tree/master/Lab2.2/)
 * [Gitlab репозиторий](https://gitlab.com/aleksey-raevich/devops-netology/-/tree/master/Lab2.2/ "Gitlab репозиторий")
 * [Bitbucket репозиторий](https://bitbucket.org/aleksey-raevich/devops-netology/src/master/Lab2.2/ "Bitbucket репозиторий")
