@@ -34,7 +34,6 @@ end
 * CPU: 2
 * RAM: 1024MB
 * HDD: 64GB
-![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.1/lab31_1.png)
 
 ```
 3. Ознакомьтесь с возможностями конфигурации VirtualBox через Vagrantfile: документация.
@@ -45,6 +44,7 @@ config.vm.provider "parallels" do |vp|
   vp.memory = 2048  
   vp.cpus = 1  
 end
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.1/lab31_1.png)
 
 ```
 4. Команда vagrant ssh из директории, в которой содержится Vagrantfile,
