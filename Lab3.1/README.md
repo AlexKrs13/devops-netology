@@ -1,32 +1,32 @@
 ### Lab3.1 Terminal
 
 ```
-1. Установите средство виртуализации Parallels Desktop.
+Установите средство виртуализации Parallels Desktop (Вместо VirtualBox на mac)
 ```
 Установлено
 
 ```
-2. Установите средство автоматизации Hashicorp Vagrant.
+Установите средство автоматизации Hashicorp Vagrant
 ```
 ❯ brew install --cask vagrant  
 ❯ vagrant plugin install vagrant-parallels  
 
 ```
-3. В вашем основном окружении подготовьте удобный для дальнейшей работы терминал.
+В вашем основном окружении подготовьте удобный для дальнейшей работы терминал
 ```
-Установлен iTerm2 + zsh.  
+Установлен iTerm2 + zsh
 
 ```
-4. С помощью базового файла конфигурации запустите Ubuntu 20.04 в VirtualBox посредством Vagrant
+1. С помощью базового файла конфигурации запустите Ubuntu 20.04 в VirtualBox посредством Vagrant
 ```
-Содержание Vagrantfile:  
+***Содержание Vagrantfile:***  
 Vagrant.configure("2") do |config|  
   config.vm.box_download_insecure = true  
   config.vm.box = "jeffnoxon/ubuntu-20.04-arm64"  
 end  
 
 ```
-5. Ознакомьтесь с графическим интерфейсом VirtualBox, 
+2. Ознакомьтесь с графическим интерфейсом VirtualBox, 
 посмотрите как выглядит виртуальная машина, которую создал для вас Vagrant, 
 какие аппаратные ресурсы ей выделены. Какие ресурсы выделены по-умолчанию?
 ```
@@ -34,9 +34,10 @@ end
 * CPU: 2
 * RAM: 1024MB
 * HDD: 64GB
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.1/lab31_1.png)
 
 ```
-6. Ознакомьтесь с возможностями конфигурации VirtualBox через Vagrantfile: документация.
+3. Ознакомьтесь с возможностями конфигурации VirtualBox через Vagrantfile: документация.
 Как добавить оперативной памяти или ресурсов процессора виртуальной машине?
 ```
 ***Добавить в Vagrantfile строки:***  
