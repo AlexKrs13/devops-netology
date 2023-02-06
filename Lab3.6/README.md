@@ -23,10 +23,13 @@ HOST: stackoverflow.com
 проверьте время загрузки страницы, какой запрос обрабатывался дольше всего?
 приложите скриншот консоли браузера в ответ
 ```
-URL: https://stackoverflow.com/  
-Status: 200  
-Source: Network  
-Address: 151.101.1.69:443  
+Ответ сервера: 200 OK  
 ![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.6/lab36_2.png)
 ![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.6/lab36_3.png)
+
+```
+3. Какой IP адрес у вас в интернете?
+```
+https://whoer.net  
+My IP: 176.116.164.129  
 
