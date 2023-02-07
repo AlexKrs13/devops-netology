@@ -1,4 +1,4 @@
-### Lab3.1 Terminal
+### Lab3.1 Работа в терминале. Лекция 1
 
 ```
 Установите средство виртуализации Parallels Desktop (Вместо VirtualBox на mac)

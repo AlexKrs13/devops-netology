@@ -1,4 +1,4 @@
-### Lab3.2 Terminal
+### Lab3.2 Работа в терминале. Лекция 2
 
 ```
 1. Какого типа команда cd?
@@ -31,7 +31,7 @@ vagrant@vagrant:~/testdir$ grep line1 input.txt | wc -l
 3. Какой процесс с PID 1 является родителем для всех процессов в вашей виртуальной машине Ubuntu 20.04?
 ```
 Это systemd:  
-![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.2/Screenshot3.png)
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.2/lab32_1.png)
 
 ```
 4. Как будет выглядеть команда, которая перенаправит вывод stderr ls на другую сессию терминала?
@@ -74,7 +74,7 @@ _line3
 6. Получится ли находясь в графическом режиме, вывести данные из PTY в какой-либо из эмуляторов TTY?
 Сможете ли вы наблюдать выводимые данные?
 ```
-![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.2/Screenshot6.png)
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.2/lab32_2.png)
 
 ```
 7. Выполните команду bash 5>&1. К чему она приведет?
