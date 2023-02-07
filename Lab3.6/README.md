@@ -25,6 +25,8 @@ HOST: stackoverflow.com
 ```
 Ответ сервера: 200 OK  
 ![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.6/lab36_2.png)
+
+Самый долгий запрос:  
 ![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.6/lab36_3.png)
 
 ```
