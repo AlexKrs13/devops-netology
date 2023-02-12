@@ -60,7 +60,7 @@ vagrant@vagrant:~$ sudo ip -s -s neigh flush all
 
 #### Windows (запуск cmd от имени администратора)
 * Проверяем таблицу. Добавляем IP, удаляем из таблицы только один нужный IP.
-![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.7/lab37_1.png)
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.7/lab37_1.png =446x617)
 * Команды для очистки кэша таблицы  
 C:\Windows\system32>arp -d  
 
