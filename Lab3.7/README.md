@@ -54,7 +54,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 |   10.10.10.32	   | 10.10.10.33 - 10.10.10.38	 |   10.10.10.39    |
 |   10.10.10.40	   | 10.10.10.41 - 10.10.10.46	 |   10.10.10.47    |
 
-Расчет в ipcalc:
+Расчет в ipcalc:  
 <img src="https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.7/lab37_2.png" width="548" height="583">
 
 ### 7. Как проверить ARP таблицу в Linux, Windows? Как очистить ARP кеш полностью? Как из ARP таблицы удалить только один нужный IP?
