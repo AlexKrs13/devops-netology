@@ -36,6 +36,9 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 ```
 
 ### 2. Какой протокол используется для распознавания соседа по сетевому интерфейсу? Какой пакет и команды есть в Linux для этого?
+1. Протокол LLDP, в linux нужно установить пакет lldpd
+2. Использование lldpctl:
+<img src="https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.7/lab37_5.png" width="1032" height="340">
 
 ### 3. Какая технология используется для разделения L2 коммутатора на несколько виртуальных сетей? Какой пакет и команды есть в Linux для этого? Приведите пример конфига.
 1. Технология VLAN
@@ -48,6 +51,13 @@ iface eth0.10 inet static
 address 192.168.1.200
 netmask 255.255.255.0
 vlan-raw-device eth0
+```
+можно через команду ip:
+```
+ip link add link eth0 name eth0.10 type vlan id 10
+ip -d link show eth0.10
+ip addr add 192.168.1.200/24 brd 192.168.1.255 dev eth0.10
+ip link set dev eth0.10 up
 ```
 <img src="https://github.com/aleksey-raevich/devops-netology/blob/master/Lab3.7/lab37_4.png" width="753" height="115">
 
