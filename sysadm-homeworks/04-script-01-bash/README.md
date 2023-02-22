@@ -65,15 +65,17 @@ done
 
 ### Ваш скрипт:
 ```bash
-while ((1==1)
+#!/usr/bin/env bash
+# Отсутствует закрывающая скобка и нет условия выхода из бесконечного цикла
+while ((1==1))
 do
-	curl https://localhost:4757
-	if [ "$?" != "0" ]
-	then
+  curl https://localhost:4757
+  if (($? != 0))
+  then
 		date >> curl.log
-    else
-        exit 0
-	fi
+  else
+    exit 0
+  fi
 done
 ```
 
@@ -117,7 +119,27 @@ done
 
 ### Ваш скрипт:
 ```bash
-???
+#!/usr/bin/env bash
+
+port=80
+hosts=("192.168.0.1" "173.194.222.113" "87.250.250.242")
+# loop n times
+while ((1==1))
+do
+  # loop by each host in array
+  for host in ${hosts[@]}
+  do
+    # check port status
+    nc -z $host $port >/dev/null 2>&1
+    if [ "$?" != "0" ]
+    then
+      echo "$(date +%Y-%m-%d_%H:%M)   host=$host:$port is not available" >> host_status.log
+      exit 0
+    fi
+  done
+  # sleep
+  sleep 1
+done
 ```
 
 ---
