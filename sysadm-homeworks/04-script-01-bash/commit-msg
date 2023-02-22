@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+test -n "$(grep '\[[[:digit:]]{1,2}-[[:alpha:]]{1,}-[[:digit:]]{1,2}-[[:alpha:]]{1,}\]*' ${1})" || {
+        echo >&2 "ERROR: Commit message is wrong."
+        exit 1
+}
+#egrep -c "\[[[:digit:]]{1,2}-[[:alpha:]]{1,}-[[:digit:]]{1,2}-[[:alpha:]]{1,}\]*" "$1"
+#echo "$?"
