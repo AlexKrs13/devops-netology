@@ -1,0 +1,3 @@
+# An asterisk is a wildcard that matches zero or
+# debug.log foo.log .log logs/debug.log
+*.log
