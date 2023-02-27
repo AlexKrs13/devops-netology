@@ -114,8 +114,21 @@ vagrant@vagrant:~$ sudo mount /dev/mapper/vgnew-lv--r0--v100 /tmp/new/
 <img src="https://github.com/aleksey-raevich/devops-netology/blob/master/images/img006.png" width="551" height="402">
 
 ### 13. Поместите туда тестовый файл, например wget https://mirror.yandex.ru/ubuntu/ls-lR.gz -O /tmp/new/test.gz.
+```bash
+vagrant@vagrant:~$ sudo wget https://mirror.yandex.ru/ubuntu/ls-lR.gz -O /tmp/new/test.gz
+--2023-02-27 09:53:54--  https://mirror.yandex.ru/ubuntu/ls-lR.gz
+Resolving mirror.yandex.ru (mirror.yandex.ru)... 213.180.204.183
+Connecting to mirror.yandex.ru (mirror.yandex.ru)|213.180.204.183|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 24719353 (24M) [application/octet-stream]
+Saving to: ‘/tmp/new/test.gz’
 
+/tmp/new/test.gz                                              100%[==============================================================================================================================================>]  23.57M  2.05MB/s    in 11s
+
+2023-02-27 09:54:05 (2.12 MB/s) - ‘/tmp/new/test.gz’ saved [24719353/24719353]
+```
 ### 14. Прикрепите вывод lsblk.
+<img src="https://github.com/aleksey-raevich/devops-netology/blob/master/images/img007.png" width="548" height="404">
 
 ### 15. Протестируйте целостность файла:
 ```
@@ -124,15 +137,38 @@ root@vagrant:~# echo $?
 0
 ```
 ### 16. Используя pvmove, переместите содержимое PV с RAID0 на RAID1.
-
+```bash
+vagrant@vagrant:~$ sudo pvmove -n lv-r0-v100 /dev/md1 /dev/md0
+  /dev/md1: Moved: 100.00%
+```
 ### 17. Сделайте --fail на устройство в вашем RAID1 md.
+```bash
+vagrant@vagrant:~$ sudo mdadm --fail /dev/md0 /dev/sdb1
+mdadm: set /dev/sdb1 faulty in /dev/md0
+```
 
 ### 18. Подтвердите выводом dmesg, что RAID1 работает в деградированном состоянии.
-
+```bash
+vagrant@vagrant:~$ sudo pvmove -n lv-r0-v100 /dev/md1 /dev/md0
+  /dev/md1: Moved: 100.00%
+vagrant@vagrant:~$ sudo mdadm --fail /dev/md0 /dev/sdb1
+mdadm: set /dev/sdb1 faulty in /dev/md0
+vagrant@vagrant:~$ sudo dmesg | grep md0 | tail -n 10
+[14546.296526] md/raid1:md0: not clean -- starting background reconstruction
+[14546.296528] md/raid1:md0: active with 2 out of 2 mirrors
+[14546.296538] md0: detected capacity change from 0 to 2144337920
+[14546.296642] md: resync of RAID array md0
+[14556.663047] md: md0: resync done.
+[17339.814716] md/raid1:md0: Disk failure on sdb1, disabling device.
+               md/raid1:md0: Operation continuing on 1 devices.
+```
 ### 19. Протестируйте целостность файла, несмотря на "сбойный" диск он должен продолжать быть доступен:
 ```
 root@vagrant:~# gzip -t /tmp/new/test.gz
 root@vagrant:~# echo $?
 0
 ```
+<img src="https://github.com/aleksey-raevich/devops-netology/blob/master/images/img008.png" width="407" height="51">
+
 ### 20. Погасите тестовый хост, vagrant destroy.
+ok
