@@ -57,21 +57,61 @@ vagrant@vagrant:~$ sudo fdisk /dev/sdb
 <img src="https://github.com/aleksey-raevich/devops-netology/blob/master/images/img002.png" width="734" height="554">
 
 ### 5. Используя sfdisk, перенесите данную таблицу разделов на второй диск.
-
+<img src="https://github.com/aleksey-raevich/devops-netology/blob/master/images/img003.png" width="568" height="489">
 
 ### 6. Соберите mdadm RAID1 на паре разделов 2 Гб.
+<img src="https://github.com/aleksey-raevich/devops-netology/blob/master/images/img004.png" width="688" height="791">
 
 ### 7. Соберите mdadm RAID0 на второй паре маленьких разделов.
+<img src="https://github.com/aleksey-raevich/devops-netology/blob/master/images/img005.png" width="665" height="756">
 
 ### 8. Создайте 2 независимых PV на получившихся md-устройствах.
+```bash
+vagrant@vagrant:~$ sudo pvcreate /dev/md0
+  Physical volume "/dev/md0" successfully created.
+vagrant@vagrant:~$ sudo pvcreate /dev/md1
+  Physical volume "/dev/md1" successfully created.
+```
 
 ### 9. Создайте общую volume-group на этих двух PV.
+```bash
+vagrant@vagrant:~$ sudo vgcreate vgnew /dev/md0 /dev/md1
+  Volume group "vgnew" successfully created
+vagrant@vagrant:~$ sudo vgs
+  VG        #PV #LV #SN Attr   VSize   VFree
+  ubuntu-vg   1   1   0 wz--n- <61.45g 30.72g
+  vgnew       2   0   0 wz--n-   2.87g  2.87g
+```
 
 ### 10. Создайте LV размером 100 Мб, указав его расположение на PV с RAID0.
+```bash
+vagrant@vagrant:~$ sudo lvcreate -L 100m -n lv-r0-v100 vgnew /dev/md1
+  Logical volume "lv-r0-v100" created.
+vagrant@vagrant:~$ sudo lvs -o +devices
+  LV         VG        Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert Devices
+  ubuntu-lv  ubuntu-vg -wi-ao----  30.72g                                                     /dev/sda3(0)
+  lv-r0-v100 vgnew     -wi-a----- 100.00m                                                     /dev/md1(0)
+```
 
 ### 11. Создайте mkfs.ext4 ФС на получившемся LV.
+```bash
+vagrant@vagrant:~$ sudo mkfs.ext4 /dev/mapper/vgnew-lv--r0--v100
+mke2fs 1.45.5 (07-Jan-2020)
+Discarding device blocks: done
+Creating filesystem with 25600 4k blocks and 25600 inodes
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (1024 blocks): done
+Writing superblocks and filesystem accounting information: done
+```
 
 ### 12. Смонтируйте этот раздел в любую директорию, например, /tmp/new.
+```bash
+vagrant@vagrant:~$ mkdir /tmp/new
+vagrant@vagrant:~$ sudo mount /dev/mapper/vgnew-lv--r0--v100 /tmp/new/
+```
+<img src="https://github.com/aleksey-raevich/devops-netology/blob/master/images/img006.png" width="551" height="402">
 
 ### 13. Поместите туда тестовый файл, например wget https://mirror.yandex.ru/ubuntu/ls-lR.gz -O /tmp/new/test.gz.
 
