@@ -51,10 +51,13 @@ end
 <img src="https://github.com/aleksey-raevich/devops-netology/blob/master/images/img001.png" width="522" height="208">
 
 ### 4. Используя fdisk, разбейте первый диск на 2 раздела: 2 Гб, оставшееся пространство.
-sudo fdisk /dev/sdb
+```
+vagrant@vagrant:~$ sudo fdisk /dev/sdb
+```  
 <img src="https://github.com/aleksey-raevich/devops-netology/blob/master/images/img002.png" width="734" height="554">
 
 ### 5. Используя sfdisk, перенесите данную таблицу разделов на второй диск.
+
 
 ### 6. Соберите mdadm RAID1 на паре разделов 2 Гб.
 
