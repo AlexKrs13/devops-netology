@@ -98,4 +98,4 @@ on linux_arm64
 ```text
 Зайдите внутрь ВМ, убедитесь, что Docker установлен с помощью команды ps a
 ```
-![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/05-virt-02-iaac/Lab_05-virt-02-iaac_img1.png)
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/virt-homeworks/05-virt-02-iaac/lab_05-virt-02-iaac_img1.png)
