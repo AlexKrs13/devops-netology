@@ -85,3 +85,18 @@ vagrant@virt-basics:~$ terraform --version
 Terraform v1.5.2
 on linux_arm64
 ```
+
+### Задача 4
+
+```text
+Создайте виртуальную машину.
+```
+Машинку удалось создать только после модификации файлов-примеров для связки Vagrant + Parallels Desktop.
+* inventory: ansible все время выдавал ошибку недоступности хоста, перебрав разные варианты, заменил host ip на ansible_local
+* Vagrantfile: как следствие совсем убрал прокидывание порта, в нем уже не было смысла
+* Все файлы добавлены в репозиторий
+```text
+Зайдите внутрь ВМ, убедитесь, что Docker установлен с помощью команды ps a
+```
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/05-virt-02-iaac
+/Lab_05-virt-02-iaac_img1.png)
