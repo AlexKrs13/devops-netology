@@ -209,8 +209,25 @@ export PGPASSWORD=admin && pg_dumpall -h localhost -U admin > backup/dump.sql
 ```
 
 * Остановите контейнер с PostgreSQL, но не удаляйте volumes:
+```text
+docker-compose stop
+[+] Stopping 1/1
+✔ Container psql  Stopped
 
+docker ps -a                                                                                                                
+CONTAINER ID   IMAGE         COMMAND                  CREATED       STATUS                     PORTS     NAMES
+0559e1f069d7   postgres:12   "docker-entrypoint.s…"   4 hours ago   Exited (0) 8 seconds ago             psql
+```
 
 * Поднимите новый пустой контейнер с PostgreSQL:
+```text
+docker run -d -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=test_db -v $(PWD)/backup:/backup --name psql2 postgres:12
+```
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/virt-homeworks/06-db-02-sql/lab_06-db-02-sql_img9.png)
+
 
 * Восстановите БД test_db в новом контейнере
+```text
+docker exec -it psql2 bash
+export PGPASSWORD=admin && psql -h localhost -U admin -f $(ls -1trh /backup/dump.sql) test_db
+```
