@@ -67,6 +67,25 @@ SQL-запрос для выдачи списка пользователей с 
 список пользователей с правами над таблицами test_db.
 </details>
 
+* итоговый список БД после выполнения пунктов выше:
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/virt-homeworks/06-db-02-sql/lab_06-db-02-sql_img2.png)
+
+* описание таблиц (describe):
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/virt-homeworks/06-db-02-sql/lab_06-db-02-sql_img3.png)
+
+* SQL-запрос для выдачи списка пользователей с правами над таблицами test_db:
+```text
+SELECT grantee, table_name, string_agg(privilege_type, ', ') AS privileges
+FROM information_schema.role_table_grants
+WHERE table_name in ('orders', 'clients')
+GROUP BY grantee, table_name;
+```
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/virt-homeworks/06-db-02-sql/lab_06-db-02-sql_img4.png)
+
+* список пользователей с правами над таблицами test_db:
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/virt-homeworks/06-db-02-sql/lab_06-db-02-sql_img5.png)
+
+
 ### Задача 3
 <details><summary>Описание задачи 3</summary>
 Используя SQL-синтаксис, наполните таблицы следующими тестовыми данными:
