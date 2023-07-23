@@ -120,6 +120,15 @@ Ritchie Blackmore	Russia
 - результаты их выполнения.
 </details>
 
+* Таблица orders:
+
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/virt-homeworks/06-db-02-sql/lab_06-db-02-sql_img6.png)
+
+* Таблица clients:
+
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/virt-homeworks/06-db-02-sql/lab_06-db-02-sql_img7.png)
+
+
 ### Задача 4
 <details><summary>Описание задачи 4</summary>
 Часть пользователей из таблицы clients решили оформить заказы из таблицы orders.
