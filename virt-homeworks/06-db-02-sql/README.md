@@ -146,12 +146,49 @@ Ritchie Blackmore	Russia
 Подсказка: используйте директиву UPDATE.
 </details>
 
+* Список команд для связывания orders и clients:
+
+```text
+update clients set "заказ" = (select id from orders where "наименование" = 'Книга' LIMIT 1) where "фамилия" = 'Иванов Иван Иванович';
+update clients set "заказ" = (select id from orders where "наименование" = 'Монитор' LIMIT 1) where "фамилия" = 'Петров Петр Петрович';
+update clients set "заказ" = (select id from orders where "наименование" = 'Гитара' LIMIT 1) where "фамилия" = 'Иоганн Себастьян Бах';
+```
+
+* Приведите SQL-запрос для выдачи всех пользователей, которые совершили заказ, а также вывод этого запроса:
+```text
+select c.id as "client_id", c."фамилия", o.id as "oder_id", o."наименование"
+from orders o join clients c on c."заказ" = o.id;
+```
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/virt-homeworks/06-db-02-sql/lab_06-db-02-sql_img8.png)
+
+
 ### Задача 5
 <details><summary>Описание задачи 5</summary>
 Получите полную информацию по выполнению запроса выдачи всех пользователей из задачи 4 (используя директиву EXPLAIN).
 
 Приведите получившийся результат и объясните, что значат полученные значения.
 </details>
+
+```text
+test_db=# EXPLAIN select c.id as "client_id", c."фамилия", o.id as "oder_id", o."наименование"                                                                                                                                                       from orders o join clients c on c."заказ" = o.id;
+                               QUERY PLAN
+-------------------------------------------------------------------------
+ Hash Join  (cost=11.57..24.20 rows=70 width=1040)
+   Hash Cond: (o.id = c."заказ")
+   ->  Seq Scan on orders o  (cost=0.00..11.40 rows=140 width=520)
+   ->  Hash  (cost=10.70..10.70 rows=70 width=524)
+         ->  Seq Scan on clients c  (cost=0.00..10.70 rows=70 width=524)
+(5 rows)
+```
+* Результат выполнения EXPLAIN:
+1. Узел Hash Join начинает работу и обращается к дочернему узлу Hash
+2. Узел Hash получает от своего дочернего узла (Seq Scan) весь набор строк clients и строит хеш-таблицу
+3. Затем Hash Join обращается ко второму дочернему узлу (Seq Scan) и соединяет строки с orders, постепенно возвращая полученные результаты
+
+* Каждый узел плана содержит три оценки стоимости:
+1. cost — стоимость при последовательном чтении страниц с диска (стоимость получения первой строки и общую стоимость получения всех строк)
+2. rows — приблизительное количество строк, выводимых узлом плана
+3. width — средний размер одной строки в байтах
 
 ### Задача 6
 <details><summary>Описание задачи 6</summary>
@@ -165,3 +202,15 @@ Ritchie Blackmore	Russia
 
 Приведите список операций, который вы применяли для бэкапа данных и восстановления.
 </details>
+
+* Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. задачу 1):
+```text
+export PGPASSWORD=admin && pg_dumpall -h localhost -U admin > backup/dump.sql
+```
+
+* Остановите контейнер с PostgreSQL, но не удаляйте volumes:
+
+
+* Поднимите новый пустой контейнер с PostgreSQL:
+
+* Восстановите БД test_db в новом контейнере
