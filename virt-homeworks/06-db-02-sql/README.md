@@ -8,9 +8,36 @@
 Приведите получившуюся команду или docker-compose-манифест.
 </details>
 
+Содержимое файла docker-compose:
+```text
+version: '3.6'
 
+volumes:
+  data: {}
+  backup: {}
 
+services:
+  postgres:
+    image: postgres:12
+    container_name: psql
+    ports:
+      - "0.0.0.0:5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+      - backup:/media/postgresql/backup
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+      POSTGRES_DB: "test_db"
+    restart: always
+```
+Запуск и подключение к БД:
+```text
+docker-compose up -d
+export PGPASSWORD=admin && psql -h localhost -U admin test_db
+```
 
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/virt-homeworks/06-db-02-sql/lab_06-db-02-sql_img1.png)
 
 ### Задача 2
 <details><summary>Описание задачи 2</summary>
