@@ -20,14 +20,14 @@
 
 ```text
 docker run -d \
-	--name postgresql \
+    --name postgresql \
     -e POSTGRES_USER=pgadmin \
-	-e POSTGRES_PASSWORD=pgadmin \
-	-e PGDATA=/var/lib/postgresql/data/pgdata \
+    -e POSTGRES_PASSWORD=pgadmin \
+    -e PGDATA=/var/lib/postgresql/data/pgdata \
     -v $(PWD)/postgres/backup:/media/postgresql/backup \
-	-v $(PWD)/postgres/data:/var/lib/postgresql/data \
+    -v $(PWD)/postgres/data:/var/lib/postgresql/data \
     -p 5432:5432 \
-	postgres:13.3
+    postgres:13.3
 	
 docker exec -it postgresql bash
 ```
