@@ -40,6 +40,7 @@
 Чтобы получить зачёт, вам нужно предоставить вывод команды "docker ps" , все контейнеры, описанные в docker-compose, должны быть в статусе "Up".
 </details>
 
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/virt-homeworks/05-virt-04-docker-compose/lab_05-virt-04-docker-compose_img5.png)
 
 
 ### Задача 4
@@ -53,3 +54,5 @@
 
 скриншот работающего веб-интерфейса Grafana с текущими метриками
 </details>
+
+![Скриншот](https://github.com/aleksey-raevich/devops-netology/blob/master/virt-homeworks/05-virt-04-docker-compose/lab_05-virt-04-docker-compose_img6.png)
